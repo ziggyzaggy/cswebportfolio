@@ -34,10 +34,8 @@
 					<a href="index.php" class="brand">LOGO</a>
 				
 					<ul class = "nav">
-					<li class ="active"> <a href="index.php">Home</a></li>
-					<li> <a href="#">Nav Link 1</a></li> 
-					<li> <a href="#">Nav Link 2</a></li> 
-					<li> <a href="#">Nav Link 3</a></li> 
+					<li> <a href="index.php">Home</a></li>
+					<li> <a href="#">Reading List</a></li> 
 					</ul>
 					
 					<ul class = "nav pull-right">

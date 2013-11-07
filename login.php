@@ -69,7 +69,7 @@ Author Kristjan Muutnik 1308701 Start
 	
 		session_destroy();
 		
-		header("location:admin.php");
+		header("location:index.php");
 	
 	
 	}
