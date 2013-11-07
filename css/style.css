@@ -1,0 +1,41 @@
+li:hover{
+
+background:#abd3ee;
+
+
+}
+
+.invalid{
+
+	color:red;
+}
+
+a:hover{
+
+background:#abd3ee;
+
+
+}
+.btn-primary{
+	background:#bdd3ee;
+	-webkit-transition: 1000ms linear 0s;
+	-moz-transition: 1000ms linear 0s;
+	-o-transition: 1000ms linear 0s;
+	transition: 1000ms linear 0s;
+	
+
+}
+
+.btn-primary:hover{
+	background:#09c;
+
+}
+
+
+li,a{
+	-webkit-transition: 1000ms linear 0s;
+	-moz-transition: 1000ms linear 0s;
+	-o-transition: 1000ms linear 0s;
+	transition: 1000ms linear 0s;
+
+}
