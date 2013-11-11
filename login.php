@@ -6,11 +6,13 @@ Author Kristjan Muutnik 1308701 Start
 
 */
 	session_start();
+	include_once("inc/inc.php");
 	
 	
 	
 	
-	if(!isset($_SESSION['admin'])){ //checks if admin is logged in, if not:
+	
+	if(!isset($_SESSION['admin'])){ //checks if admin is not logged in
 		echo "
 		
 			<h4>Welcome user</h4>
@@ -52,9 +54,18 @@ Author Kristjan Muutnik 1308701 Start
 		$u = $_POST['user'];
 		$p = $_POST['password'];
 		
-		if($u == "admin" && $p == "p"){ // checks the username and password
+		$result = mysql_query		//queries the database for entered username and pw
+		("		
+		SELECT * 
+		FROM admin
+		WHERE username = '$u' AND password = '$p'
+		");
+		
+		$count = mysql_num_rows($result);	//counts the number of rows returned in the $result query
+		
+		if($count > 0){ 						// if more than one record is returned....
 			
-			$_SESSION['admin'] = $u; //if valid credentials were supplied store the username in to the session variable
+			$_SESSION['admin'] = $u; 				//set the admin session
 			header("location:admin.php");
 			
 		}else{
@@ -67,7 +78,7 @@ Author Kristjan Muutnik 1308701 Start
 	
 	if(isset($_POST['logout'])){ //if the logout button was clicked:
 	
-		session_destroy();
+		session_destroy();  	//destroy the session(log the user out)
 		
 		header("location:index.php");
 	

@@ -27,6 +27,9 @@
 
 
 
+
+
+
 	<div class = "container">
 		<div class = "navbar navbar-static-top" style ="margin-bottom:20px;">
 			<div class ="navbar-inner">
@@ -35,7 +38,7 @@
 				
 					<ul class = "nav">
 					<li> <a href="index.php">Home</a></li>
-					<li> <a href="reading.php">Reading List</a></li> 
+					<li class="active"> <a href="reading.php">Reading List</a></li> 
 					</ul>
 					
 					<ul class = "nav pull-right">
@@ -50,33 +53,58 @@
 	
 	
 	
-		<div class = "well">
+		
 			
 			
 			<div class="row-fluid">
-				<div class ="span6 well">
-					<h4>Content column 1</h4>
-				
-					<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet
-					dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit
-					lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit
-					</p>
+			
+				<div class="span2 ">
+					<ul class="nav nav-list well">
+						<li class="nav-header">Menu</li>
+						<li class="active"><a href="reading.php">Browse</a></li>
+						<li><a href="search.php">Search</a></li>
+						
 					
-					<a class="btn btn-primary" href="#">I am a button</a>
+					</ul>
+				
+				</div>
+			
+				<div class ="span10 well">
+				
+					<div class="row fluid">
+					
+						<div class="span12" style="margin-left:10px;">
+							<h3 style="margin-left:30px;">Browse</h3>
+							<ul class="nav nav-list">
+								<li class="divider"></li>
+							</ul>
+						
+						</div>
+					
+					
+					
+					</div>
+				
+				
+					<?php
+	
+						
+
+						include_once('inc/inc.php');
+						
+
+
+						?>
 					
 				</div>
 				
-				<div class="span6 well">
-					<h4>Content Column 2</h4>
-					<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet
-					dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit
-					lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit
-					</p>
-				</div>		
+				
+					
+				
 			
 			</div>
-		</div>
+		
 	</div>	
 	
 </body>
-</html>
+</html>	
