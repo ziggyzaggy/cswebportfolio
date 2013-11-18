@@ -38,7 +38,7 @@
 				
 					<ul class = "nav">
 					<li> <a href="index.php">Home</a></li>
-					<li> <a href="#">Reading List</a></li> 
+					<li> <a href="reading.php">Reading List</a></li> 
 					</ul>
 					
 					<ul class = "nav pull-right">
@@ -64,7 +64,7 @@
 				
 					<?php
 	
-						//include_once("init.php");
+						
 
 						include_once("login.php");
 
@@ -80,3 +80,6 @@
 			</div>
 		</div>
 	</div>	
+	
+</body>
+</html>	
