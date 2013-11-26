@@ -54,14 +54,11 @@ Author Kristjan Muutnik 1308701 Start
 		$u = $_POST['user'];
 		$p = $_POST['password'];
 		
-		$result = mysql_query		//queries the database for entered username and pw
-		("		
-		SELECT * 
-		FROM admin
-		WHERE username = '$u' AND password = '$p'
-		");
+		$result = $dbh->query("SELECT * FROM admin WHERE username = '$u' AND password='$p'");//queries the database for entered username and pw
 		
-		$count = mysql_num_rows($result);	//counts the number of rows returned in the $result query
+			
+		
+		$count = $result->rowCount(); //counts the number of rows returned in the $result query
 		
 		if($count > 0){ 						// if more than one record is returned....
 			
@@ -80,7 +77,7 @@ Author Kristjan Muutnik 1308701 Start
 	
 		session_destroy();  	//destroy the session(log the user out)
 		
-		header("location:index.php");
+		header("location:index.php"); //redirect user to the home page
 	
 	
 	}
