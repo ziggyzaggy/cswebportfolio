@@ -9,7 +9,7 @@ $search = $_GET['searchField'];		//pass the get variable in to a variable
 
 if(!empty($_GET['searchField'])){		//check that the search field wasn't empty
 	
-	$result = mysql_query				//query the database based on user input
+	$result = $dbh->query				//query the database based on user input
 	
 				("
 	
@@ -21,7 +21,7 @@ if(!empty($_GET['searchField'])){		//check that the search field wasn't empty
 				);
 				
 				
-		$rowCounter = mysql_num_rows($result);	//count amount of returned records
+		$rowCounter = $result->rowCount($result);	//count amount of returned records
 				
 		if($rowCounter > 0){			//if more than 0 records were returned		
 		
@@ -35,7 +35,7 @@ if(!empty($_GET['searchField'])){		//check that the search field wasn't empty
 				
 				$i = 1;
 				
-				while($row = mysql_fetch_assoc($result)){ 		//loops through the results echoing them out
+				foreach($result as $row){ 		//loops through the results echoing them out
 					
 					
 					echo $i. "&nbsp &nbsp <b>" . $row['username'] . " </b><br>";
