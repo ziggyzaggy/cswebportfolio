@@ -78,6 +78,13 @@
 							<ul class="nav nav-list">
 								<li class="divider"></li>
 							</ul>
+							
+							<form style="margin-left:290px; margin-top:30px;" action="reading.php" method="get">
+								<input style="margin-left:20px; margin-right:20px; padding:10px;" class="btn btn-primary" type="submit" name="category" value="Module">
+								<input style="margin-left:20px; margin-right:20px; padding:10px;" class="btn btn-primary" type="submit" name="category" value="Course and Year">
+								<input style="margin-left:20px; margin-right:20px; padding:10px;" class="btn btn-primary" type="submit" name="category" value="Course">
+							</form>
+							
 						
 						</div>
 					
@@ -85,16 +92,18 @@
 					
 					</div>
 				
-				
-					<?php
+					<div class="well">
+						<?php
 	
 						
 
-						include_once('inc/inc.php');
+							
+							include_once('reading.backbone.php');
 						
 
 
 						?>
+					<div>
 					
 				</div>
 				

@@ -105,7 +105,7 @@
 	
 						
 
-						include_once('inc/inc.php');
+						
 						include_once('snoop.php');
 						
 

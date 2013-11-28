@@ -1,9 +1,9 @@
 <?php
 
-/*
-Author Kristjan Muutnik 1308701 Start
-
-
+/**
+*Author Kristjan Muutnik 1308701 Start
+*
+*
 */
 	session_start();
 	include_once("inc/inc.php");
@@ -82,5 +82,5 @@ Author Kristjan Muutnik 1308701 Start
 	
 	}
 	
-/*end of 1308701*/
+/*end of Kristjan Muutnik 1308701*/
 ?>

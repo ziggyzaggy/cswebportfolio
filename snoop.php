@@ -2,7 +2,10 @@
 
 include_once('inc/inc.php');
 
-
+/**
+**
+** @ Author Kristjan Muutnik 1308701
+*/
 
 if(isset($_GET['snoop'])){		//check that the button was clicked
 $search = $_GET['searchField'];		//pass the get variable in to a variable
@@ -38,12 +41,15 @@ if(!empty($_GET['searchField'])){		//check that the search field wasn't empty
 				foreach($result as $row){ 		//loops through the results echoing them out
 					
 					
-					echo $i. "&nbsp &nbsp <b>" . $row['username'] . " </b><br>";
+					echo "<a href = display.php?id=" . $row['username'] . ">". $i. "&nbsp &nbsp View <b> " . $row['username'] . "</b> </a>  <br>";
 					$i++;
 					}
+					
+					
+						
 		
 		
-		}else{				//if not records were returned
+		}else{				//if no records were returned
 			echo "Nope, nothing";
 		}
 
@@ -51,6 +57,6 @@ if(!empty($_GET['searchField'])){		//check that the search field wasn't empty
 
 }	
 
-
+//end of 1308701
 
 ?>
