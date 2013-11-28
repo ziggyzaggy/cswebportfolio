@@ -24,14 +24,14 @@ include('inc/inc.php');
 		
 		 echo "<h4>Module books: </h4> <br>";
 		 
-			$result = $dbh -> query("SELECT username FROM admin");
+			$result = $dbh -> query("SELECT username FROM admin"); //that's work in progress
 		 
 		 foreach($result as $row){
 			echo "<a href = display.php?id=" . $row['username'] . ">". $i. "&nbsp &nbsp View <b> " . $row['username'] . "</b> </a>  <br>";
 			$i++;
 		 }
 		
-		}elseif($_GET['category'] == 'Course and Year'){
+		}elseif($_GET['category'] == 'Course and Year'){ //that's work in progress
 		
 		 echo "<h4>Course and Year books: </h4> <br>";
 		 
@@ -45,21 +45,52 @@ include('inc/inc.php');
 		
 		}if($_GET['category'] == 'Course'){
 		
-		  echo "<h4>Course books:</h4> <br>";
+		  echo "<h4>Courses:</h4> <br>";
 		  
 		  
-		  $result = $dbh -> query("SELECT username FROM admin");
+		  $result = $dbh -> query("SELECT course_name, id FROM courses"); //query the database for course name
+		  
 		 
-		  foreach($result as $row){
-			echo "<a href = display.php?id=" . $row['username'] . ">". $i. "&nbsp &nbsp View <b> " . $row['username'] . "</b> </a>  <br>";
-			$i++;
-		 }
+		  foreach($result as $row){ //iterates through the result query displaying the courses available
+			echo "<a href = '#'>  <b> " . $row['course_name'] . "</b> </a>  <br>";
+			
+			$courseId = $row['id']; //set current name of the course to a variable
+			
+			
+			
+			
+			$resultBooks = $dbh -> query				/**query the database with each id of the course
+														 **returned in the previous loop
+														*/
+			("
+			SELECT books.title, books.bookid
+			FROM books, courses, courses_recommended
+			WHERE courses.id = courses_recommended.courseid			
+			AND books.bookid = courses_recommended.bookid
+			AND courses.id = '$courseId'
+			"); 	
+			
+			
+																							
+			if($resultBooks -> rowCount($resultBooks) > 0){ //check if the course has any books recommended
+			
+				echo "books recommended for this course:<br><br>";
+			
+				foreach($resultBooks as $booksRow){ //iterate through the books that correspond to each of the courses
+	
+					echo "<a style='padding-right:100px; padding-left:30px;' href = display.php?id=" . $booksRow['bookid'] . ">View <b> " . $booksRow['title'] . "</b> </a>  <br>"; //display links to each book that corresponds to the course name, links sends a unique id for to the display page
+					}
+				}else{
+						echo "No book recommendations for this course yet"; //if no books found for this course
+					}
+			echo "<br><br><br>";
+			}
 		
 		}
 	
 	
 	}else{
-		echo "Click one of the categories above to browse books!";
+		echo "Click one of the categories above to browse books!"; // if no category is yet selected
 	
 	}
 
