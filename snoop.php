@@ -5,6 +5,7 @@ include_once('inc/inc.php');
 /**
 **
 ** @ Author Kristjan Muutnik 1308701
+**	The backbone of search returns the results that match a keyword
 */
 
 if(isset($_GET['snoop'])){		//check that the button was clicked
@@ -57,6 +58,6 @@ if(!empty($_GET['searchField'])){		//check that the search field wasn't empty
 
 }	
 
-//end of 1308701
+// end of Kristjan Muutnik 1308701
 
 ?>

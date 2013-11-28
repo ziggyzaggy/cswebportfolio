@@ -1,5 +1,11 @@
 <?php
 
+/*
+**@Author Kristjan Muutnik 1308701
+
+** show correct books depending on which category the user clicked
+*/
+
 
 include('inc/inc.php');
 
@@ -9,8 +15,10 @@ include('inc/inc.php');
 	
 	$i = 1;
 	
-	
-		if($_GET['category'] == 'Module'){
+		//check which category was set and perform correct query
+		//using admins table as no other table is created yet, will change once tables are available
+		
+		if($_GET['category'] == 'Module'){ 
 		
 		
 		
@@ -51,10 +59,10 @@ include('inc/inc.php');
 	
 	
 	}else{
-		echo "Don't be shy, <br> Click one of the categories above to browse books!";
+		echo "Click one of the categories above to browse books!";
 	
 	}
 
 
-
+//end of Kristjan Muutnik 1308701
 ?>
