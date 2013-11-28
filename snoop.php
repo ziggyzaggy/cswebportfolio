@@ -18,8 +18,8 @@ if(!empty($_GET['searchField'])){		//check that the search field wasn't empty
 				("
 	
 				SELECT *
-				FROM admin
-				WHERE username LIKE '%$search%' OR password LIKE '%$search%'
+				FROM books
+				WHERE keyword LIKE '%$search%'
 				
 				"
 				);
@@ -42,7 +42,7 @@ if(!empty($_GET['searchField'])){		//check that the search field wasn't empty
 				foreach($result as $row){ 		//loops through the results echoing them out
 					
 					
-					echo "<a href = display.php?id=" . $row['username'] . ">". $i. "&nbsp &nbsp View <b> " . $row['username'] . "</b> </a>  <br>";
+					echo "<a href = display.php?id=" . $row['bookid'] . ">". $i. "&nbsp &nbsp View <b> " . $row['title'] . "</b> </a>  <br>";
 					$i++;
 					}
 					
