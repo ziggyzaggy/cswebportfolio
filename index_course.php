@@ -1,6 +1,10 @@
+<!--author: eduard tache (0909007)-->
+
 <!DOCTYPE html>
 
-
+<?php 
+    require_once "inc/inc.php";
+?>
 <html>
 
 <head>
@@ -30,18 +34,35 @@
                                 </ul>
 			</div>	
 		</div>
+            <?php
             
             
-            <h1>Course Index</h1>
-            <table class="table">
-                <th>Course Name</th><th>Year of Entry</th><th>Course Duration</th>
-                <tr><td>BSc Computer Science</td><td>2</td><td>5</td><td><a href="#">Edit<a/> <a href="#">Delete<a/></td></tr>
-                <tr><td>BSc Philosophy</td><td>1</td><td>3</td><td><a href="#">Edit<a/> <a href="#">Delete<a/></td></tr>
-                <tr><td>MSc International Business</td><td>1</td><td>1</td><td><a href="#">Edit<a/> <a href="#">Delete<a/></td></tr>
-                <tr><td>BSc Journalism</td><td>1</td><td>4</td><td><a href="#">Edit<a/> <a href="#">Delete<a/></td></tr>
-            </table>
             
+            try {
+                $sql = "select id, course_name, year_of_entry, duration from COURSES";
+                $results = $conn->query($sql);
+                if($results->rowcount() == 0){
+                    echo "no courses found <br />";
+                } else {
+                    echo "<h1>Course Index</h1>";
+                    echo "<table class=\"table\">";
+                    echo "<th>Course Name</th><th>Year of Entry</th><th>Course Duration</th>";
+                    foreach ($results as $row){
+                        echo "<tr>";
+                        echo "<td>".$row["course_name"]."</td>";
+                        echo "<td>".$row["year_of_entry"]."</td>";
+                        echo "<td>".$row["duration"]."</td>";
+                        echo "<td><a href=\"#\">Edit</a> <a href=\"#\">Delete</a></td>"; 
+                        echo "</tr>";
+                    }
+                    echo "</table>";
+                }
+            } catch (PDOException $e) {
+                echo "query failed: ". $e->getMessage();
+            }
             
+            $conn=null;          
+            ?>
         </div>
 	
 </body>

@@ -1,22 +1,15 @@
-
 <?php
+    $hostname = "csdm-mysql";
+    $username = "0909007";
+    $password = "fdformat";
+    $database = "db0909007_cm3028";
 
-
-
-$hostname = "localhost";
-$username = "root";
-$password = "";
-$db = "csdm";
-
-try{
-	$dbh = new PDO("mysql:host=$hostname; dbname=$db", $username, $password);
-	
-}
-	catch(PDOException $exc)
-{
-	echo $exc -> getMessage();
-}
-
-//mysql_select_db("csdm");
-
+    try {
+                $dsn = "mysql:host=".$hostname.";dbname=".$database;
+                $conn = new PDO($dsn, $username, $password);
+                $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            } catch (PDOException $e) {
+              // enter catch block in event of error in preceding try block
+              echo "Connection failed: ".$e->getMessage();
+            }
 ?>
