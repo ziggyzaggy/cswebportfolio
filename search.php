@@ -80,7 +80,7 @@ include_once('header.php');
 					
 					</div>
 					
-					<div class="well">
+					
 				
 					<?php
 	
@@ -92,7 +92,7 @@ include_once('header.php');
 
 
 						?>
-					</div>
+					
 				</div>
 				
 				
