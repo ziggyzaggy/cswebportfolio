@@ -47,10 +47,7 @@ if(!empty($_GET['searchField'])){		//check that the search field wasn't empty
 					echo "<a href = display.php?id=" . $row['bookid'] . ">". $i. "&nbsp &nbsp View <b> " . $row['title'] . "</b> </a>  <br>";
 					$i++;
 					}
-					
-					
-						
-		
+
 		
 		}else{				//if no records were returned
 			echo "Nope, nothing";

@@ -58,7 +58,7 @@
 					<div class="row fluid">
 					
 						<div class="span12" style="margin-left:10px;">
-							<h3 style="margin-left:30px;"><?php echo $bookTitle;?></h3>
+							<h3 style="margin-left:30px;">Book</h3>
 							<ul class="nav nav-list">
 								<li class="divider"></li>
 							</ul>
@@ -72,12 +72,17 @@
 					
 					
 					<div class="well">
+					
+				
+					
 				
 					<?php
 	
 						
-							 echo $bookTitle;  
-							 echo $noBookSelected;
+							 display(); 
+							
+							 
+							 
 
 						?>
 					</div>
