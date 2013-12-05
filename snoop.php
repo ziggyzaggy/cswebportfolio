@@ -20,7 +20,7 @@ if(!empty($_GET['searchField'])){		//check that the search field wasn't empty
 	
 				SELECT *
 				FROM books
-				WHERE keyword LIKE '%$search%'
+				WHERE Content_Summary LIKE '%$search%'
 				
 				"
 				);
@@ -36,7 +36,7 @@ if(!empty($_GET['searchField'])){		//check that the search field wasn't empty
 				
 			
 				echo"
-				something was found, lemme show you the <b>$rowCounter</b> $humanise i've found: <br> <br>";
+				 <b>$rowCounter</b> $humanise found: <br> <br>";
 		
 				
 				$i = 1;
@@ -44,7 +44,7 @@ if(!empty($_GET['searchField'])){		//check that the search field wasn't empty
 				foreach($result as $row){ 		//loops through the results echoing them out
 					
 					
-					echo "<a href = display.php?id=" . $row['bookid'] . ">". $i. "&nbsp &nbsp View <b> " . $row['title'] . "</b> </a>  <br>";
+					echo "<a href = display.php?id=" . $row['Book_ID'] . ">". $i. "&nbsp &nbsp View <b> " . $row['Title'] . "</b> </a>  <br>";
 					$i++;
 					}
 
