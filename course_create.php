@@ -25,6 +25,7 @@
                         //display succesful message
                         echo "<div class=\"alert alert-success\">
                                 <p><strong>Well done!</strong> You successfully created a course</p>
+                                <a href=\"course_index.php\" class=\"alert-link\"><button type=\"button\" class=\"btn btn-primary\">see courses</button></a>
                               </div>";
                         
                     }

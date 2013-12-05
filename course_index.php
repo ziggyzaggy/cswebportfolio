@@ -16,13 +16,14 @@
                 } else {
                     echo "<h1>Course Index</h1>";
                     echo "<table class=\"table\">";
-                    echo "<th>Course Name</th><th>Year of Entry</th><th>Course Duration</th>";
+                    echo "<th>Id</th><th>Course Name</th><th>Year of Entry</th><th>Course Duration</th>";
                     foreach ($results as $row){
                         echo "<tr>";
+                        echo "<td>".$row["id"]."</td>";
                         echo "<td>".$row["course_name"]."</td>";
                         echo "<td>".$row["year_of_entry"]."</td>";
                         echo "<td>".$row["duration"]."</td>";
-                        echo "<td><a href=\"#\">Edit</a> <a href=\"#\">Delete</a></td>"; 
+                        echo "<td><a href=\"course_update.php?id=".$row["id"]."\">Edit</a> <a href=\"course_delete.php?id=".$row["id"]."\">Delete</a></td>"; 
                         echo "</tr>";
                     }
                     echo "</table>";

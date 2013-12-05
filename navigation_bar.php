@@ -3,7 +3,17 @@
         <a href="index.php" class="brand">LOGO</a>
         <ul class = "nav">
             <li> <a href="index.php">Home</a></li>
-            <li> <a href="reading.php">Reading List</a></li> 
+            <li> <a href="reading.php">Reading List</a></li>
+            <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                    Courses <b class="caret"></b>
+                </a>
+                <ul class="dropdown-menu">
+                    <li><a href="<?php echo "course_index.php" ?>">Show all courses</a></li> 
+                    <li><a href="<?php echo "course_create.php" ?>">Create a course</a></li>  
+                </ul>
+                
+            </li>
         </ul>
         <ul class = "nav pull-right">
             <li> <a href="admin.php">Admin</a></li>
