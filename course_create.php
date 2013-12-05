@@ -14,9 +14,25 @@
                     $cname = $_POST['course_name'];
                     $yentry = $_POST['year_of_entry'];
                     $duration = $_POST['duration'];
-                    echo "Course name: ".$cname;
-                    echo "year of entry: ".$yentry;
-                    echo "duration: ".$duration;
+                    
+                    try {
+                        $conn->beginTransaction();
+                        $sql = "INSERT INTO courses (course_name, year_of_entry, duration) VALUES (\"".$cname."\",".$yentry.",".$duration.")";
+                        $stmt = $conn->prepare($sql);
+                        $stmt->execute();
+                        $conn->commit();
+                        
+                        //display succesful message
+                        echo "<div class=\"alert alert-success\">
+                                <p><strong>Well done!</strong> You successfully created a course</p>
+                              </div>";
+                        
+                    }
+                    catch(PDOException $e) {
+                        $conn->rollback();
+                        exit("unable to create new course: ". $e->getMessage());
+                    }
+                    $conn=null;
                 }
             ?>
             <form class="well" action="" method="POST">  
@@ -35,3 +51,5 @@
 	
 </body>
 <?php include 'footer.php' ?>
+
+<!--author: eduard tache (0909007)-->
