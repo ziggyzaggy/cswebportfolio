@@ -48,13 +48,13 @@ include('inc/inc.php');
 		  echo "<h4>Courses:</h4> <br>";
 		  
 		  
-		  $result = $dbh -> query("SELECT course_name, id FROM courses"); //query the database for course name
+		  $result = $dbh -> query("SELECT Course_Title, Course_ID FROM courses"); //query the database for course name
 		  
 		 
 		  foreach($result as $row){ //iterates through the result query displaying the courses available
-			echo "<a href = '#'>  <b> " . $row['course_name'] . "</b> </a>  <br>";
+			echo "<a href = '#'>  <b> " . $row['Course_Title'] . "</b> </a>  <br>";
 			
-			$courseId = $row['id']; //set current name of the course to a variable
+			$courseId = $row['Course_ID']; //set current name of the course to a variable
 			
 			
 			
@@ -63,11 +63,11 @@ include('inc/inc.php');
 														 **returned in the previous loop
 														*/
 			("
-			SELECT books.title, books.bookid
+			SELECT books.Title, books.Book_ID
 			FROM books, courses, courses_recommended
-			WHERE courses.id = courses_recommended.courseid			
-			AND books.bookid = courses_recommended.bookid
-			AND courses.id = '$courseId'
+			WHERE courses.Course_ID = courses_recommended.courseid			
+			AND books.Book_ID = courses_recommended.bookid
+			AND courses.Course_ID = '$courseId'
 			"); 	
 			
 			
@@ -78,7 +78,7 @@ include('inc/inc.php');
 			
 				foreach($resultBooks as $booksRow){ //iterate through the books that correspond to each of the courses
 	
-					echo "<a style='padding-right:100px; padding-left:30px;' href = display.php?id=" . $booksRow['bookid'] . ">View <b> " . $booksRow['title'] . "</b> </a>  <br>"; //display links to each book that corresponds to the course name, links sends a unique id for to the display page
+					echo "<a style='padding-right:100px; padding-left:30px;' href = display.php?id=" . $booksRow['Book_ID'] . ">View <b> " . $booksRow['Title'] . "</b> </a>  <br>"; //display links to each book that corresponds to the course name, links sends a unique id for to the display page
 					}
 				}else{
 						echo "No book recommendations for this course yet"; //if no books found for this course
