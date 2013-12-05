@@ -19,30 +19,48 @@
 				if(isset($_GET['id'])){
 				
 				$bookID = $_GET['id']; //store id in the variable
-				$books = $dbh -> query("SELECT title, bookid, author, keyword FROM books WHERE bookid = '$bookID' "); //query database with the stored id
+				$books = $dbh -> query("SELECT * FROM books WHERE Book_ID = '$bookID' "); //query database with the stored id
 
 			
 				foreach($books as $row){ //populate variables with database data
-					$bookTitle = $row['title'];
-					$id = $row['bookid'];
-					$keyword = $row['keyword'];
-					$author = $row['author'];
+					$bookTitle = $row['Title'];
+					$id = $row['Book_ID'];
+					$keyword = $row['Content_Summary'];
+					$author = $row['First_Author'];
+					$secondAuthor = $row['Second_Author'];
+					$publisher = $row['Publisher'];
+					$year = $row['Year'];
+					
 				}
 
 					echo "
+					
+					
+					
+					
 					<div class='row-fluid'><b>
-					<div class='span3'>Title</div>
-					<div class='span3'>ID</div>
-					<div class='span3'>Author</div
-					><div class='span3'>Keyword</div>
-					</b>
+				
+						<div class='span2'>Title</div>
+						<div class='span1'>ID</div>
+						<div class='span2'>First Author</div>
+						<div class='span2'>Second Author</div>
+						<div class='span2'>Publisher</div>
+						<div class='span1'>Year</div>
+						<div class='span2'>Description</div>
+						</b>
+						
 					</div>";
 					echo "
 					<div class='row-fluid'>
-					<div class='span3'>" . $bookTitle . "</div>
-					<div class='span3'>". $id ."</div>
-					<div class='span3'>". $author ."</div>
-					<div class='span3'>" . $keyword  . "</div>
+					
+						<div class='span2'>" . $bookTitle . "</div>
+						<div class='span1'>". $id ."</div>
+						<div class='span2'>". $author ."</div>
+						<div class='span2'>". $secondAuthor ."</div>
+						<div class='span2'>". $publisher ."</div>
+						<div class='span1'>". $year ."</div>
+						<div class='span2'>" . $keyword  . "</div>
+						
 					</div>";
 					$dbh = null; //close connection
 					
