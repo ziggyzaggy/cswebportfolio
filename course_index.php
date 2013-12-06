@@ -9,21 +9,21 @@
             <?php include 'navigation_bar.php' ?>
             <?php
             try {
-                $sql = "select id, course_name, year_of_entry, duration from COURSES";
+                $sql = "SELECT Course_Id, Course_Title, Year_of_Entry, Course_Duration FROM courses";
                 $results = $conn->query($sql);
                 if($results->rowcount() == 0){
                     echo "no courses found <br />";
                 } else {
                     echo "<h1>Course Index</h1>";
                     echo "<table class=\"table\">";
-                    echo "<th>Id</th><th>Course Name</th><th>Year of Entry</th><th>Course Duration</th>";
+                    echo "<th>Course Id</th><th>Course Title</th><th>Year of Entry</th><th>Course Duration</th>";
                     foreach ($results as $row){
                         echo "<tr>";
-                        echo "<td>".$row["id"]."</td>";
-                        echo "<td>".$row["course_name"]."</td>";
-                        echo "<td>".$row["year_of_entry"]."</td>";
-                        echo "<td>".$row["duration"]."</td>";
-                        echo "<td><a href=\"course_update.php?id=".$row["id"]."\">Edit</a> <a href=\"course_delete.php?id=".$row["id"]."\">Delete</a></td>"; 
+                        echo "<td>".$row["Course_Id"]."</td>";
+                        echo "<td>".$row["Course_Title"]."</td>";
+                        echo "<td>".$row["Year_of_Entry"]."</td>";
+                        echo "<td>".$row["Course_Duration"]."</td>";
+                        echo "<td><a href=\"course_update.php?Course_Id=".$row["Course_Id"]."\">Edit</a> <a href=\"course_delete.php?Course_Id=".$row["Course_Id"]."\">Delete</a></td>"; 
                         echo "</tr>";
                     }
                     echo "</table>";

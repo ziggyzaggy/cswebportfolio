@@ -11,13 +11,14 @@
             <h1>Create Course</h1>
             <?php
                 if(isset($_POST['create'])){
-                    $cname = $_POST['course_name'];
-                    $yentry = $_POST['year_of_entry'];
-                    $duration = $_POST['duration'];
+                    $cid = $_POST['Course_Id'];
+                    $cname = $_POST['Course_Title'];
+                    $yentry = $_POST['Year_of_Entry'];
+                    $Course_Duration = $_POST['Course_Duration'];
                     
                     try {
                         $conn->beginTransaction();
-                        $sql = "INSERT INTO courses (course_name, year_of_entry, duration) VALUES (\"".$cname."\",".$yentry.",".$duration.")";
+                        $sql = "INSERT INTO courses (Course_Id, Course_Title, Year_of_Entry, Course_Duration) VALUES (\"".$cid."\",\"".$cname."\",".$yentry.",".$Course_Duration.")";
                         $stmt = $conn->prepare($sql);
                         $stmt->execute();
                         $conn->commit();
@@ -36,13 +37,15 @@
                     $conn=null;
                 }
             ?>
-            <form class="well" action="" method="POST">  
+            <form class="well" action="" method="POST">
+                <label>Course Id</label>  
+                <input name="Course_Id" type="text" class="span3">
                 <label>Course Name</label>  
-                <input name="course_name" type="text" class="span3">  
+                <input name="Course_Title" type="text" class="span3">  
                 <label>Year of Entry</label>  
-                <input name="year_of_entry" type="number" class="span3" min="0" max="5">
+                <input name="Year_of_Entry" type="number" class="span3" min="0" max="5">
                 <label>Course Duration</label>  
-                <input name="duration" type="number" class="span3" min="0" max="5">
+                <input name="Course_Duration" type="number" class="span3" min="0" max="5">
                 <br>
                 <button name="create" type="submit" class="btn">Submit</button>  
             </form>
