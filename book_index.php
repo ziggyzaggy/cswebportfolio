@@ -18,7 +18,7 @@ include 'header.php';
     <a href=book_create.php?>Create Book</a>
     <br>
     <br>
-
+    
     <?php
     
         try{
@@ -49,7 +49,7 @@ include 'header.php';
                 echo "<td><a href=\"book_update.php?Book_ID=".$row["Book_ID"]."\">Edit</a> <a href=\"book_delete.php?Book_ID=".$row["Book_ID"]."\">Delete</a></td>";
                 echo "</tr>\n";
             }
-            print "</table>\n";
+            print "</table>\n";        
       
             
         } 

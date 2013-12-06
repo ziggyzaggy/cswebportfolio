@@ -10,6 +10,8 @@ include 'header.php';
 <!--Allows the user to create a new book entry in the database-->
 
 <body>       
+    <div class = "container">
+        <div class = "well">
     <?php include 'navigation_bar.php' ?>
 
     <h1>Update Book</h1>
@@ -52,3 +54,7 @@ include 'header.php';
         header("Location: $url");
     }
     ?>
+
+        </div>
+        </div>
+</body>
