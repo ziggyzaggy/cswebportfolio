@@ -54,7 +54,7 @@
 		$u = $_POST['user'];
 		$p = $_POST['password'];
 		
-		$result = $dbh->query("SELECT * FROM admin WHERE username = '$u' AND password='$p'");//queries the database for entered username and pw
+		$result = $conn->query("SELECT * FROM admin WHERE username = '$u' AND password='$p'");//queries the database for entered username and pw
 		
 			
 		
