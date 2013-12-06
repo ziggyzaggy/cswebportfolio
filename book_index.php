@@ -10,6 +10,7 @@ include 'header.php';
 
 <body>    
     <div class = "container">
+        <div class = "well">
     <?php include 'navigation_bar.php' ?>
     
     <h1>Book Index</h1>
@@ -57,6 +58,7 @@ include 'header.php';
         $conn = null;
     
     ?>
+    </div>
     </div>
 </body>
 
