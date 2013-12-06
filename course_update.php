@@ -16,12 +16,16 @@
                 $yentry = $_POST['Year_of_Entry'];
                 $Course_Duration = $_POST['Course_Duration'];
                 $cid = $_POST['Course_Id'];
+                $moduleid = $_POST['Module_ID'];
+                
+                //echo "the module selected is: ".$moduleid;
                 //this will clear the variable and stop the script at step 3.
                 $_GET['Course_Id'] = null;
 
                 try {
                     $conn->beginTransaction();
-                    $sql = "UPDATE courses SET Course_Title=\"".$cname."\", Year_of_Entry=".$yentry.", Course_Duration=".$Course_Duration." WHERE Course_Id='".$cid."'";                        
+                    $sql = "UPDATE courses SET Course_Title=\"".$cname."\", Year_of_Entry=".$yentry.", Course_Duration=".$Course_Duration." WHERE Course_Id='".$cid."'";
+                    $sql2 = "";
                     $stmt = $conn->prepare($sql);                      
                     $stmt->execute();
                     $conn->commit();
@@ -62,6 +66,22 @@
                     echo "<input type=\"number\" name=\"Year_of_Entry\" value=\"".$course["Year_of_Entry"]."\" class=\"span3\" min=\"0\" max=\"5\" placeholder=\"".$course["Year_of_Entry"]."\">";
                     echo "<label>Course Duration</label>"; 
                     echo "<input type=\"number\" name=\"Course_Duration\" value=\"".$course["Course_Duration"]."\" class=\"span3\" min=\"0\" max=\"5\" placeholder=\"".$course["Course_Duration"]."\">";
+                    
+                    // author :Rayyan Alorini 1113195
+                    $sql_get_modules = "SELECT Module_ID, Title FROM modules";
+                    $get_modules = $conn->query($sql_get_modules);
+                    if($get_modules->rowcount() == 0){
+                        echo "no modules found";
+                    } else {
+                        echo "<label>Modules list</label>"; 
+                        echo "<select name=\"Module_ID\" class=\"span3\" >";
+                            foreach ($get_modules as $row){
+                                echo "<option value=\"".$row[Module_ID]."\">".$row[Title]."</option>";
+                            }
+                        echo "</select>";
+                    }
+                    // end author :Rayyan Alorini 1113195
+                    
                     echo "<br>";
                     echo "<button type=\"submit\" name=\"update\" class=\"btn\">Submit</button>";
                     echo "</form>";

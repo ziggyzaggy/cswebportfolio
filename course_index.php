@@ -20,7 +20,7 @@
                     foreach ($results as $row){
                         echo "<tr>";
                         echo "<td>".$row["Course_Id"]."</td>";
-                        echo "<td>".$row["Course_Title"]."</td>";
+                        echo "<td><a href=\"course_show.php?Course_Id=".$row["Course_Id"]."\">".$row["Course_Title"]."</a></td>";
                         echo "<td>".$row["Year_of_Entry"]."</td>";
                         echo "<td>".$row["Course_Duration"]."</td>";
                         echo "<td><a href=\"course_update.php?Course_Id=".$row["Course_Id"]."\">Edit</a> <a href=\"course_delete.php?Course_Id=".$row["Course_Id"]."\">Delete</a></td>"; 
