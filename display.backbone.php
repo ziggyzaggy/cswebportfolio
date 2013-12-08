@@ -19,7 +19,7 @@
 				if(isset($_GET['id'])){
 				
 				$bookID = $_GET['id']; //store id in the variable
-				$books = $dbh -> query("SELECT * FROM books WHERE Book_ID = '$bookID' "); //query database with the stored id
+				$books = $conn -> query("SELECT * FROM books WHERE Book_ID = '$bookID' "); //query database with the stored id
 
 			
 				foreach($books as $row){ //populate variables with database data
@@ -62,9 +62,10 @@
 						<div class='span2'>" . $keyword  . "</div>
 						
 					</div>";
-					$dbh = null; //close connection
+					$conn = null; //close connection
 					
 					}else{	//if no book was chosen (in case some smart people will try input the url manually)
+					
 					$noBookSelected = "No book was selected, please use <a href='search.php'>search</a> or <a href='reading.php'>browse</a> to select one";
 					echo $noBookSelected;
 					$bookTitle = "";

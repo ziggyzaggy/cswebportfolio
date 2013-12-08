@@ -24,7 +24,7 @@ include('inc/inc.php');
 		
 		 echo "<h4>Module books: </h4> <br>";
 		 
-			$result = $dbh -> query("SELECT username FROM admin"); //that's work in progress
+			$result = $conn -> query("SELECT username FROM admin"); //that's work in progress
 		 
 		 foreach($result as $row){
 			echo "<a href = display.php?id=" . $row['username'] . ">". $i. "&nbsp &nbsp View <b> " . $row['username'] . "</b> </a>  <br>";
@@ -35,7 +35,7 @@ include('inc/inc.php');
 		
 		 echo "<h4>Course and Year books: </h4> <br>";
 		 
-		 $result = $dbh -> query("SELECT Course_Title, Course_ID FROM courses"); //query the database for course name
+		 $result = $conn -> query("SELECT Course_Title, Course_ID FROM courses"); //query the database for course name
 		  
 		 
 			  foreach($result as $row){ //iterates through the result query displaying the courses available
@@ -44,7 +44,7 @@ include('inc/inc.php');
 				$courseId = $row['Course_ID']; //set current name of the course to a variable
 				
 				
-				$years = $dbh -> query ("SELECT recommended_year
+				$years = $conn -> query ("SELECT recommended_year
 				FROM courses_recommended
 				WHERE courses_recommended.courseid = '$courseId' "); //iterates through the recommended years of a course
 				foreach($years as $year){
@@ -54,7 +54,7 @@ include('inc/inc.php');
 				
 				
 				
-				$resultBooks = $dbh -> query				/**query the database with each id of the course
+				$resultBooks = $conn -> query				/**query the database with each id of the course
 															 **returned in the previous loop
 															*/
 				("
@@ -97,7 +97,7 @@ include('inc/inc.php');
 		  echo "<h4>Courses:</h4> <br>";
 		  
 		  
-		  $result = $dbh -> query("SELECT Course_Title, Course_ID FROM courses"); //query the database for course name
+		  $result = $conn -> query("SELECT Course_Title, Course_ID FROM courses"); //query the database for course name
 		  
 		 
 		  foreach($result as $row){ //iterates through the result query displaying the courses available
@@ -108,7 +108,7 @@ include('inc/inc.php');
 			
 			
 					
-					$resultBooks = $dbh -> query				/**query the database with each id of the course
+					$resultBooks = $conn -> query				/**query the database with each id of the course
 																 **returned in the previous loop
 																*/
 					("
