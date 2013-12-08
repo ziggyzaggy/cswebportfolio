@@ -22,14 +22,7 @@ include('inc/inc.php');
 		
 		
 		
-		 echo "<h4>Module books: </h4> <br>";
-		 
-			$result = $conn -> query("SELECT username FROM admin"); //that's work in progress
-		 
-		 foreach($result as $row){
-			echo "<a href = display.php?id=" . $row['username'] . ">". $i. "&nbsp &nbsp View <b> " . $row['username'] . "</b> </a>  <br>";
-			$i++;
-		 }
+		 header("location:books_for_module.php");
 		
 		}elseif($_GET['category'] == 'Course and Year'){ //that's work in progress
 		
