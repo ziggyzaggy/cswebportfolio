@@ -9,7 +9,7 @@
 
 
 	<div class = "container">
-		<?php include 'navigation_bar.php' ?>		
+		<?php include ("navigation_bar.php");?>	
 			
 	
 	

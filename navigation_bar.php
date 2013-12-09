@@ -1,11 +1,51 @@
+
+<?php 
+// check what page is the user currently on to put an active class to appropriate <li> (navigation bar)
+
+//****NOTE!****
+//All the files must be contained within the /cswebportfolio/ directory,
+// or another path must be specified in the else if statements, (pro tip: use ctrl+f to replace the paths)
+// otherwise the function will not work and the active classes won't be set!
+//***************
+
+//author Kristjan Muutnik 1308701
+
+//set variables to empty string.
+$coursesActive= "";
+$booksActive ="";
+$modulesActive ="";
+$readingActive="";
+$indexActive="";
+$adminActive="";
+
+//check what page the user is on and set active classes accordingly
+if($_SERVER['REQUEST_URI'] === '/cswebportfolio/course_index.php' || $_SERVER['REQUEST_URI'] === '/cswebportfolio/course_create.php'){
+	$coursesActive = "active";
+}elseif($_SERVER['REQUEST_URI'] === '/cswebportfolio/book_index.php' || $_SERVER['REQUEST_URI'] === '/cswebportfolio/book_create.php'){
+	$booksActive = "active";
+}elseif($_SERVER['REQUEST_URI'] === '/cswebportfolio/module_index.php' || $_SERVER['REQUEST_URI'] === '/cswebportfolio/module_create.php'){
+	$readingActive = "active";
+}elseif($_SERVER['REQUEST_URI'] === '/cswebportfolio/reading.php'){
+	$readingActive = "class = 'active'";
+}elseif($_SERVER['REQUEST_URI'] === '/cswebportfolio/search.php'){
+	$readingActive = "class = 'active'";
+}elseif($_SERVER['REQUEST_URI'] === '/cswebportfolio/index.php'){
+	$indexActive = "class = 'active'";
+}elseif($_SERVER['REQUEST_URI'] === '/cswebportfolio/admin.php'){
+	$adminActive = "class = 'active'";
+	}
+
+//end of Kristjan Muutnik 1308701
+?>
+
 <div class = "navbar navbar-static-top" style ="margin-bottom:20px;">
     <div class ="navbar-inner">
         <a href="index.php" class="brand">LOGO</a>
         <ul class = "nav">
-            <li> <a href="index.php">Home</a></li>
-            <li> <a href="reading.php">Reading List</a></li>
+            <li <?php echo $indexActive; ?> > <a href="index.php">Home</a></li>
+            <li <?php echo $readingActive; ?> > <a href="reading.php">Reading List</a></li>
             
-            <li class="dropdown">
+            <li class="dropdown <?php echo $coursesActive; ?>">
                 <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                     Courses <b class="caret"></b>
                 </a>
@@ -15,7 +55,7 @@
                 </ul>
                 
             </li>
-            <li class="dropdown">
+            <li class="dropdown <?php echo $booksActive; ?>">
                 <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                     Books <b class="caret"></b>
                 </a>
@@ -25,7 +65,7 @@
                 </ul>
                 
             </li>
-            <li class="dropdown">
+            <li class="dropdown <?php echo $modulesActive; ?>">
                 <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                     Modules <b class="caret"></b>
                 </a>
@@ -37,7 +77,7 @@
             </li>
         </ul>
         <ul class = "nav pull-right">
-            <li> <a href="admin.php">Admin</a></li>
+            <li <?php echo $adminActive; ?> > <a href="admin.php">Admin</a></li>
         </ul>
     </div>	
 </div>
