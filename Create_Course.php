@@ -1,16 +1,16 @@
 <!--Created by Greg Morrison 1207569-->
 
-<?php require_once "inc/inc.php";?>
+<?php require_once "inc/inc.php";?> 
 
-<?php include 'header.php';?>
+<?php include 'header.php';?> 
 
 <body>
     
     <div class = "container">
-            <?php include 'navigation_bar.php' ?>
-            <h1>Create Course</h1>
+            <?php include 'navigation_bar.php' ?> 
+            <h1>Create Course</h1> 
             <?php
-            IF(ISSET($_POST['Create'])){
+            IF(ISSET($_POST['Create'])){ 
                 $CourseID = $_POST['Course_ID'];
                 $CourseName = $_POST['Course_Title'];
                 $EntryYear = $_POST['Year_of_Entry'];
@@ -18,8 +18,8 @@
                 
                 TRY{
                     $CONN ->BeginTransaction();
-                    $SQL = "Insert InTo Courses ((Course_Id, Course_Title, Year_of_Entry, Course_Duration) VALUES (\"".$CourseID."\",\"".$CourseName."\",".$EntryYear.",".$Course_Duration.")";
-                    $SQLPREP = $conn->prepare($sql);
+                    $SQL = "Insert InTo Courses ((Course_ID, Course_Title, Year_of_Entry, Course_Duration) VALUES (\"".$CourseID."\",\"".$CourseName."\",".$EntryYear.",".$Course_Duration.")";
+                    $SQLPREP = $CONN->prepare($sql);
                     $SQLPREP ->Execute ();
                     $CONN -> Commit ();
                     
@@ -29,17 +29,17 @@
                                 <a href=\"course_index.php\" class=\"alert-link\"><button type=\"button\" class=\"btn btn-primary\">Show Courses</button></a>
                               </div>";
                         }
-            
+            //Message to be displayed if the course was not created successfully
             catch(PDOException $e) {
                         $CONN->rollback();
-                        exit("Error: The course was not created: ". $e->getMessage());
+                        exit("Error: The course was not created: ". $e->getMessage());  
                     }
-                    $CONN=null;
+                    $CONN=null; 
                 }
               ?>
-              <form class="well" action="" method="POST">
+              <form class="well" action="" method="POST"> <!--Starts the form that data can be entered in to to create a new course--> 
                 <label>Course Id</label>  
-                <input name="Course_Id" type="text" class="span3">
+                <input name="Course_ID" type="text" class="span3">
                 <label>Course Name</label>  
                 <input name="Course_Title" type="text" class="span3">  
                 <label>Year of Entry</label>  
