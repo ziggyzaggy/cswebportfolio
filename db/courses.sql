@@ -5,8 +5,8 @@
 CREATE TABLE IF NOT EXISTS `courses` (
   `Course_ID` char(6) NOT NULL,
   `Course_Title` varchar(150) NOT NULL,
-  `Year_of_Entry` int(11) NOT NULL,
-  `Course_duration` int(11) NOT NULL,
+  `Year_of_Entry` enum('1','3') NOT NULL,
+  `Course_duration` enum('1','2','4') NOT NULL,
   PRIMARY KEY (`Course_ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
