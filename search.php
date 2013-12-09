@@ -12,24 +12,8 @@ include_once('header.php');
 
 
 	<div class = "container">
-		<div class = "navbar navbar-static-top" style ="margin-bottom:20px;">
-			<div class ="navbar-inner">
-				
-					<a href="index.php" class="brand">LOGO</a>
-				
-					<ul class = "nav">
-					<li> <a href="index.php">Home</a></li>
-					<li class="active"> <a href="reading.php">Reading List</a></li> 
-					</ul>
-					
-					<ul class = "nav pull-right">
-					<li> <a href="admin.php">Admin</a></li>
-					
-					</ul>
-					
-				
-			</div>	
-		</div>		
+
+		<?php include ("navigation_bar.php");?>
 			
 	
 	
@@ -71,7 +55,7 @@ include_once('header.php');
 						<br>
 						<form action="search.php" method="get">
 						
-							<input type="text" name="searchField" palceholder="input search here"><br>
+							<input type="text" name="searchField" placeholder="input search here"><br>
 							<input class="btn btn-primary" type="submit" name="snoop" value="Search">
 						
 						
