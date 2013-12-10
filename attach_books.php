@@ -1,6 +1,6 @@
 <?php
 //Author Kristjan Muutnik 1308701
-//Page used to attach books to a specified module
+//Page used to attach and deattach books from a specified module
 require_once "inc/inc.php";
 
 include 'header.php'; 
@@ -171,9 +171,7 @@ include 'header.php';
                     $conn->commit();
 					
                     
-                    echo "<div class = 'alert alert-success'>
-						Success! Book <strong>".$deattachBook."</strong> will be <strong>deattached</strong> in 3 seconds
-						</div>	";
+                   
 						
 					header("location:attach_books.php");
 					
