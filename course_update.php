@@ -2,7 +2,11 @@
 
 <?php require_once "inc/inc.php"; ?>
 
-<?php include 'header.php'; ?>
+<?php
+
+require("check.admin.php");
+
+ include 'header.php'; ?>
 
 <body>
 	<div class = "container">

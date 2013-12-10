@@ -1,7 +1,9 @@
 <!--Created by Greg Morrison(1207569)-->
 <?php Require_once "inc/inc.php";?> 
 
-<?php Include 'header.php';?> 
+<?php
+require("check.admin.php");
+ Include 'header.php';?> 
     
 <body>
 	<div class = "container">
