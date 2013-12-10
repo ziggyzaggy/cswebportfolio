@@ -2,13 +2,16 @@
 <?php Require_once "inc/inc.php";?> 
 
 <?php
-require("check.admin.php");
+
  Include 'header.php';?> 
     
 <body>
 	<div class = "container">
             <div class = "well">
-                <?php include 'navigation_bar.php' ?>  
+                <?php include 'navigation_bar.php';
+						require("check.admin.php");
+
+				?>  
 
                 <?php
                  try {

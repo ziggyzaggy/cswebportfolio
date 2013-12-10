@@ -1,5 +1,7 @@
 
 <?php 
+
+session_start();
 // check what page is the user currently on to put an active class to appropriate <li> (navigation bar)
 
 //****NOTE!****
@@ -45,6 +47,14 @@ if($_SERVER['REQUEST_URI'] === '/cswebportfolio/course_index.php' || $_SERVER['R
             <li <?php echo $indexActive; ?> > <a href="index.php">Home</a></li>
             <li <?php echo $readingActive; ?> > <a href="reading.php">Reading List</a></li>
             
+			
+			<?php
+			
+			if(isset($_SESSION['admin'])){ //only shows admin controls if admin is authenticated
+			
+			
+			?>
+			
             <li class="dropdown <?php echo $coursesActive; ?>">
                 <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                     Courses <b class="caret"></b>
@@ -76,6 +86,16 @@ if($_SERVER['REQUEST_URI'] === '/cswebportfolio/course_index.php' || $_SERVER['R
                 
             </li>
         </ul>
+		
+		
+		<ul class="nav">
+		<li><a href ="attach_books.php">Attach Book</a></li>
+		
+		
+		
+		
+		<?php }?>
+		</ul>
         <ul class = "nav pull-right">
             <li <?php echo $adminActive; ?> > <a href="admin.php">Admin</a></li>
         </ul>

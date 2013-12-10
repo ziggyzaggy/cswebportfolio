@@ -3,7 +3,7 @@ require_once "inc/inc.php";
 ?>
 <?php
 
-require("check.admin.php");
+
 
 
 include 'header.php';
@@ -16,7 +16,9 @@ include 'header.php';
 <body>       
     <div class = "container">
         <div class = "well">
-    <?php include 'navigation_bar.php' ?>
+    <?php include 'navigation_bar.php';
+			require("check.admin.php");
+	?>
 
     <h1>Update Book</h1>
     <form <?php echo $_SERVER["PHP_SELF"]; ?>  method="post">    
