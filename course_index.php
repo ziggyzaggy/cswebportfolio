@@ -1,44 +1,44 @@
-<!--author: eduard tache (0909007)-->
+<!--Created by Greg Morrison(1207569)-->
+<?php Require_once "inc/inc.php";?> 
 
-<?php require_once "inc/inc.php"; ?>
-
-<?php include 'header.php'; ?>
-
+<?php Include 'header.php';?> 
+    
 <body>
 	<div class = "container">
             <div class = "well">
-                <?php include 'navigation_bar.php' ?>
+                <?php include 'navigation_bar.php' ?>  
+                <h1>Course Index</h1> 
                 <?php
                 try {
-                    $sql = "SELECT Course_Id, Course_Title, Year_of_Entry, Course_Duration FROM courses";
-                    $results = $conn->query($sql);
-                    if($results->rowcount() == 0){
-                        echo "no courses found <br />";
+                    $SQL = "SELECT Course_ID, Course_Title, Year_of_Entry, Course_Duration FROM Courses"; //Select columns from Course Table
+                    $Results = $conn->query($SQL); 
+                    if($Results->rowcount() == 0){
+                        echo "Sorry no courses have been found. <br />"; //If no results are found this message will be displayed
                     } else {
-                        echo "<h1>Course Index</h1>";
-                        echo "<table class=\"table\">";
-                        echo "<th>Course Id</th><th>Course Title</th><th>Year of Entry</th><th>Course Duration</th>";
-                        foreach ($results as $row){
+                        echo "<h1>Course Index</h1>"; 
+                        echo "<table class=\"table\">"; 
+                        echo "<th>Course Id</th><th>Course Title</th><th>Year of Entry</th><th>Course Duration</th>"; //Table Headers
+                        foreach ($Results as $Row){ //Selecting the relevant information for the table
                             echo "<tr>";
-                            echo "<td>".$row["Course_Id"]."</td>";
-                            echo "<td><a href=\"course_show.php?Course_Id=".$row["Course_Id"]."\">".$row["Course_Title"]."</a></td>";
-                            echo "<td>".$row["Year_of_Entry"]."</td>";
-                            echo "<td>".$row["Course_Duration"]."</td>";
-                            echo "<td><a href=\"course_update.php?Course_Id=".$row["Course_Id"]."\">Edit</a> <a href=\"course_delete.php?Course_Id=".$row["Course_Id"]."\">Delete</a></td>"; 
+                            echo "<td>".$Row["Course_Id"]."</td>";
+                            echo "<td><a href=\"course_show.php?Course_Id=".$Row["Course_Id"]."\">".$Row["Course_Title"]."</a></td>";
+                            echo "<td>".$Row["Year_of_Entry"]."</td>";
+                            echo "<td>".$Row["Course_Duration"]."</td>";
+                            echo "<td><a href=\"course_update.php?Course_Id=".$Row["Course_Id"]."\">Edit</a> <a href=\"course_delete.php?Course_Id=".$Row["Course_Id"]."\">Delete</a></td>"; 
                             echo "</tr>";
                         }
-                        echo "</table>";
+                        echo "</table>"; 
                     }
                 } catch (PDOException $e) {
-                    echo "query failed: ". $e->getMessage();
+                    echo "Sorry your query failed, please try another.". $e->getMessage(); //message you will recieve if the query fails
                 }
 
-                $conn=null;          
+                $conn=null;           
                 ?>
-            </div>
         </div>
+      </div>
 </body>
 
-<?php include 'footer.php' ?>
+<?php include 'footer.php' ?> 
 
-<!--author: eduard tache (0909007)-->
+<!--Created by Greg Morrison-->

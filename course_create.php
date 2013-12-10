@@ -1,45 +1,45 @@
-<!--author: eduard tache (0909007)-->
+<!--Created by Greg Morrison 1207569-->
 
-<?php require_once "inc/inc.php"; ?>
+<?php require_once "inc/inc.php";?> 
 
-<?php include 'header.php'; ?>
+<?php include 'header.php';?> 
 
 <body>
     
-	<div class = "container">
-            <?php include 'navigation_bar.php' ?>
-            <h1>Create Course</h1>
+    <div class = "container">
+            <?php include 'navigation_bar.php' ?> 
+            <h1>Create Course</h1> 
             <?php
-                if(isset($_POST['create'])){
-                    $cid = $_POST['Course_Id'];
-                    $cname = $_POST['Course_Title'];
-                    $yentry = $_POST['Year_of_Entry'];
-                    $Course_Duration = $_POST['Course_Duration'];
+            IF(ISSET($_POST['Create'])){ 
+                $CourseID = $_POST['Course_ID'];
+                $CourseName = $_POST['Course_Title'];
+                $EntryYear = $_POST['Year_of_Entry'];
+                $Course_Duration = $_POST[' Course_duration'];
+                
+                TRY{
+                    $CONN ->BeginTransaction();
+                    $SQL = "Insert InTo Courses ((Course_ID, Course_Title, Year_of_Entry, Course_Duration) VALUES (\"".$CourseID."\",\"".$CourseName."\",".$EntryYear.",".$Course_Duration.")";
+                    $SQLPREP = $CONN->prepare($sql);
+                    $SQLPREP ->Execute ();
+                    $CONN -> Commit ();
                     
-                    try {
-                        $conn->beginTransaction();
-                        $sql = "INSERT INTO courses (Course_Id, Course_Title, Year_of_Entry, Course_Duration) VALUES (\"".$cid."\",\"".$cname."\",".$yentry.",".$Course_Duration.")";
-                        $stmt = $conn->prepare($sql);
-                        $stmt->execute();
-                        $conn->commit();
-                        
-                        //display succesful message
+                    //display message showing a new course has been created
                         echo "<div class=\"alert alert-success\">
-                                <p><strong>Well done!</strong> You successfully created a course</p>
-                                <a href=\"course_index.php\" class=\"alert-link\"><button type=\"button\" class=\"btn btn-primary\">see courses</button></a>
+                                <p><strong>Well done, you have successfully created a new course!</strong></p>
+                                <a href=\"course_index.php\" class=\"alert-link\"><button type=\"button\" class=\"btn btn-primary\">Show Courses</button></a>
                               </div>";
-                        
+                        }
+            //Message to be displayed if the course was not created successfully
+            catch(PDOException $e) {
+                        $CONN->rollback();
+                        exit("Error: The course was not created: ". $e->getMessage());  
                     }
-                    catch(PDOException $e) {
-                        $conn->rollback();
-                        exit("unable to create new course: ". $e->getMessage());
-                    }
-                    $conn=null;
+                    $CONN=null; 
                 }
-            ?>
-            <form class="well" action="" method="POST">
+              ?>
+              <form class="well" action="" method="POST"> <!--Starts the form that data can be entered in to to create a new course--> 
                 <label>Course Id</label>  
-                <input name="Course_Id" type="text" class="span3">
+                <input name="Course_ID" type="text" class="span3">
                 <label>Course Name</label>  
                 <input name="Course_Title" type="text" class="span3">  
                 <label>Year of Entry</label>  
@@ -49,11 +49,8 @@
                 <br>
                 <button name="create" type="submit" class="btn">Submit</button>  
             </form>
-            
-            
-        </div>
-	
 </body>
-<?php include 'footer.php' ?>
+<?php include 'footer.php'?>
 
-<!--author: eduard tache (0909007)-->
+?>
+<!--Created by Greg Morrison (1207569)-->
