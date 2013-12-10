@@ -35,8 +35,23 @@
                 {
                     echo "the attached module id: ".$_POST[$i."_attached_moduleId"]."<br>";
                     echo "the year of teaching: ".$_POST[$i."_Year_of_Teaching"]."<br>";
+                    
+                    //if the checkbox_detache is checked then detach it from db
                     if(isset($_POST[$i."_checkbox_detache"])){
-                        echo "is checked: ".$_POST[$i."_checkbox_detache"]."<br>";
+                        //echo "is checked: ".$_POST[$i."_checkbox_detache"]."<br>";
+                        try {
+                            $conn->beginTransaction(); /// ERROR AT THIS LINE
+                            $sql = "DELETE FROM `course_modules` WHERE `Course_ID` = '".$cid."' AND `Module_ID` = '".$_POST[$i."_attached_moduleId"]."'";
+                            $stmt = $conn->prepare($sql);   
+                            $stmt->execute();
+                            $conn->commit();
+                            echo "detached";
+                        }
+                        catch(PDOException $e) {
+                            $conn->rollback();
+                            exit("unable to detach the module: ". $e->getMessage());
+                        }
+                        $conn=null;
                     }
                 }
                 echo "<br>";
@@ -49,26 +64,7 @@
                         echo "is checked: ".$_POST[$i."_checkbox_attach"]."<br>";
                     }
                 }
-                
-                
-                
-                // try to detach the first one
-//                try {
-//                    $conn->beginTransaction();
-//                    $sql = "DELETE FROM `course_modules` WHERE `course_modules`.`Course_ID` = '$cid' AND `course_modules`.`Module_ID` = '$first_attached_module_id'";
-//                    $stmt = $conn->prepare($sql);                      
-//                    $stmt->execute();
-//                    $conn->commit();
-//                }
-//                catch(PDOException $e) {
-//                    $conn->rollback();
-//                    exit("unable to detach the module: ". $e->getMessage());
-//                }
-//                $conn=null;
 
-                //echo "the year_of_teaching is: ".$year_of_teaching;
-                //echo "the first_attached_module value is: ".$first_attached_module;
-                //
                 //this will clear the variable and stop the script at step 3.
                 $_GET['Course_Id'] = null;
 
@@ -113,19 +109,10 @@
                     echo "<label>Course Name</label>";  
                     echo "<input type=\"text\" name=\"Course_Title\" value=\"".$course["Course_Title"]."\" class=\"span3\" placeholder=\"".$course["Course_Title"]."\">";  
                     echo "<label>Year of Entry</label>"; 
-                    echo "<select name=\"Course_Duration\" class=\"span3\"> 
-                            <option value=\"".$course["Year_of_Entry"]."\" selected=\"selected\">".$course["Year_of_Entry"]."</option> 
-                            <option value=\"1\">1</option>
-                            <option value=\"3\">3</option>
-                          </select>";
+                    echo "<input type=\"text\" name=\"Year_of_Entry\" value=\"".$course["Year_of_Entry"]."\" class=\"span3\" placeholder=\"".$course["Year_of_Entry"]."\"><span><i> can only be 1st or 3rd year</i></span>";
                     
                     echo "<label>Course Duration</label>"; 
-                    echo "<select name=\"Course_Duration\" class=\"span3\"> 
-                            <option value=\"".$course["Year_of_Entry"]."\" selected=\"selected\">".$course["Year_of_Entry"]."</option> 
-                            <option value=\"1\">1</option>
-                            <option value=\"2\">2</option>
-                            <option value=\"4\">4</option>
-                          </select>";
+                    echo "<input type=\"text\" name=\"Course_Duration\" value=\"".$course["Course_Duration"]."\" class=\"span3\" placeholder=\"".$course["Course_Duration"]."\"><span><i> can only be 1, 2 or 4 years long</i></span>";
                     $course_duration = $course["Course_Duration"];
                     
                     
