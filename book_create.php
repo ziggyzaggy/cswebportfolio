@@ -3,7 +3,7 @@
     ?>
     <?php
 	
-	require("check.admin.php");
+	
 	
     include 'header.php';
     ?>
@@ -14,7 +14,9 @@
 
     <body>       
         <div class = "container">
-        <?php include 'navigation_bar.php' ?>
+        <?php include 'navigation_bar.php';
+				require("check.admin.php");
+		?>
 
         <h1>Create Book</h1>
 

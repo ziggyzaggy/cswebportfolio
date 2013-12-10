@@ -5,14 +5,16 @@ require_once "inc/inc.php";
 
 include 'header.php'; 
 
-require("check.admin.php");
+
 ?>
 
 
 <body>    
     <div class = "container">
         
-    <?php include 'navigation_bar.php' ?>
+    <?php include 'navigation_bar.php';
+		require("check.admin.php");
+	?>
     
     <h1>Attach Books</h1>
     <br>

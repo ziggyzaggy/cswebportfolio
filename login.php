@@ -5,7 +5,7 @@
 *
 *
 */
-	session_start();
+	
 	include_once("inc/inc.php");
 	
 	
