@@ -21,19 +21,19 @@ $indexActive="";
 $adminActive="";
 
 //check what page the user is on and set active classes accordingly
-if($_SERVER['REQUEST_URI'] === '/phpcw/course_index.php' || $_SERVER['REQUEST_URI'] === '/phpcw/course_create.php'){
+if($_SERVER['REQUEST_URI'] === '/cswebportfolio/course_index.php' || $_SERVER['REQUEST_URI'] === '/cswebportfolio/course_create.php'){
 	$coursesActive = "active";
-}elseif($_SERVER['REQUEST_URI'] === '/phpcw/book_index.php' || $_SERVER['REQUEST_URI'] === '/phpcw/book_create.php'){
+}elseif($_SERVER['REQUEST_URI'] === '/cswebportfolio/book_index.php' || $_SERVER['REQUEST_URI'] === '/cswebportfolio/book_create.php'){
 	$booksActive = "active";
-}elseif($_SERVER['REQUEST_URI'] === '/phpcw/module_index.php' || $_SERVER['REQUEST_URI'] === '/phpcw/module_create.php'){
+}elseif($_SERVER['REQUEST_URI'] === '/cswebportfolio/module_index.php' || $_SERVER['REQUEST_URI'] === '/cswebportfolio/module_create.php'){
 	$readingActive = "active";
-}elseif($_SERVER['REQUEST_URI'] === '/phpcw/reading.php'){
+}elseif($_SERVER['REQUEST_URI'] === '/cswebportfolio/reading.php'){
 	$readingActive = "class = 'active'";
-}elseif($_SERVER['REQUEST_URI'] === '/phpcw/search.php'){
+}elseif($_SERVER['REQUEST_URI'] === '/cswebportfolio/search.php'){
 	$readingActive = "class = 'active'";
-}elseif($_SERVER['REQUEST_URI'] === '/phpcw/index.php'){
+}elseif($_SERVER['REQUEST_URI'] === '/cswebportfolio/index.php'){
 	$indexActive = "class = 'active'";
-}elseif($_SERVER['REQUEST_URI'] === '/phpcw/admin.php'){
+}elseif($_SERVER['REQUEST_URI'] === '/cswebportfolio/admin.php'){
 	$adminActive = "class = 'active'";
 	}
 
