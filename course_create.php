@@ -2,7 +2,12 @@
 
 <?php require_once "inc/inc.php";?> 
 
-<?php include 'header.php';?> 
+<?php
+
+
+require("check.admin.php");
+
+ include 'header.php';?> 
 
 <body>
     
@@ -18,7 +23,7 @@
                 
                 TRY{
                     $CONN ->BeginTransaction();
-                    $SQL = "Insert InTo Courses ((Course_ID, Course_Title, Year_of_Entry, Course_Duration) VALUES (\"".$CourseID."\",\"".$CourseName."\",".$EntryYear.",".$Course_Duration.")";
+                    $SQL = "Insert Into Courses ((Course_ID, Course_Title, Year_of_Entry, Course_Duration) VALUES (\"".$CourseID."\",\"".$CourseName."\",".$EntryYear.",".$Course_Duration.")";
                     $SQLPREP = $CONN->prepare($sql);
                     $SQLPREP ->Execute ();
                     $CONN -> Commit ();
@@ -52,5 +57,5 @@
 </body>
 <?php include 'footer.php'?>
 
-?>
+
 <!--Created by Greg Morrison (1207569)-->

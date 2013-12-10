@@ -2,6 +2,10 @@
 require_once "inc/inc.php";
 ?>
 <?php 
+
+
+require("check.admin.php");
+
 include 'header.php'; 
 ?>
 <!--Beginning of code written by Jonathon Reid (1005350)-->
