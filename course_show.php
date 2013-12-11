@@ -19,17 +19,17 @@
             
             //Normal execution flow: 1.fetches the course info from db and puts it in the form for editing
             // TO DO : USE PREPARE STATEMENTS
-            if(isset($_GET['Course_Id'])){
+            if(isset($_GET['Course_ID'])){
                 //fetch the course from the database and update it with the new values on submit
                 try {
-                    $sql = "SELECT Course_Id, Course_Title, Year_of_Entry, Course_Duration FROM courses WHERE Course_Id = '".$_GET['Course_Id']."'";
+                    $sql = "SELECT Course_ID, Course_Title, Year_of_Entry, Course_Duration FROM courses WHERE Course_ID = '".$_GET['Course_ID']."'";
                     $query = $conn->query($sql);
                     $course = $query->fetch();
                     
                     echo "<table class=\"table\">";
                     echo "<th>Course Id</th><th>Course Title</th><th>Year of Entry</th><th>Course Duration</th>";
                     echo "<tr>";
-                        echo "<td>".$course["Course_Id"]."</td>";
+                        echo "<td>".$course["Course_ID"]."</td>";
                         echo "<td>".$course["Course_Title"]."</td>";
                         echo "<td>".$course["Year_of_Entry"]."</td>";
                         echo "<td>".$course["Course_Duration"]."</td>";
@@ -38,7 +38,7 @@
                     
                     // TO DO : USE PREPARE STATEMENTS
                     // author :Rayyan Alorini 1113195
-                    $sql_get_modules_attached ="SELECT Module_ID, Title FROM modules WHERE Module_ID IN (SELECT Module_ID FROM course_modules WHERE Course_ID = '".$_GET['Course_Id']."' )";
+                    $sql_get_modules_attached ="SELECT Module_ID, Title FROM modules WHERE Module_ID IN (SELECT Module_ID FROM course_modules WHERE Course_ID = '".$_GET['Course_ID']."' )";
                     $query_modules_attached = $conn->query($sql_get_modules_attached);
                     
                     if($query_modules_attached->rowcount() == 0){

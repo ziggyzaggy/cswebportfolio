@@ -2,29 +2,24 @@
 
 <?php require_once "inc/inc.php"; ?>
 
-<?php
-
-
-
- include 'header.php'; ?>
+<?php include 'header.php'; ?>
 
 <body>
 	<div class = "container">
             <?php include 'navigation_bar.php';
-					require("check.admin.php");
-				
-			?>
+	     	  require("check.admin.php");
+            ?>
             <h1>Course Delete</h1>
             
             <?php
             //Normal execution flow: 2.deletes the course indicated by the user
             if(isset($_POST['delete'])){
-                $cid = $_POST['Course_Id'];
-                $_GET['Course_Id'] = null;
+                $cid = $_POST['Course_ID'];
+                $_GET['Course_ID'] = null;
             
                 try {
                     $conn->beginTransaction();
-                    $sql = "DELETE from courses WHERE Course_Id='".$cid."'";                        
+                    $sql = "DELETE from courses WHERE Course_ID='".$cid."'";                        
                     $stmt = $conn->prepare($sql);                      
                     $stmt->execute();
                     $conn->commit();
@@ -50,20 +45,20 @@
             
             <?php
             //Normal execution flow: 3.stops processing the rest of the script
-            if(!isset($_GET['Course_Id']) && isset($_POST['delete'])){
+            if(!isset($_GET['Course_ID']) && isset($_POST['delete'])){
                 exit;
             }    
             
             //Normal execution flow: 1.fetches the course info from db and puts it in the form for editing
-            if(isset($_GET['Course_Id'])){
+            if(isset($_GET['Course_ID'])){
                 //fetch the course from the database and update it with the new values on submit
                 try {
-                    $sql = "SELECT Course_Id, Course_Title, Year_of_Entry, Course_Duration from COURSES where Course_Id = '".$_GET['Course_Id']."'";
+                    $sql = "SELECT Course_ID, Course_Title, Year_of_Entry, Course_Duration from COURSES where Course_ID = '".$_GET['Course_ID']."'";
                     $query = $conn->query($sql);
                     $course = $query->fetch();
                     
                     echo "<form class=\"well\" action=\"\" method=\"POST\">";
-                    echo "<input type=\"hidden\" name=\"Course_Id\" value=\"".$course["Course_Id"]."\" readonly>";
+                    echo "<input type=\"hidden\" name=\"Course_ID\" value=\"".$course["Course_ID"]."\" readonly>";
                     echo "<label>Course Name</label>";  
                     echo "<input type=\"text\" name=\"Course_Title\" value=\"".$course["Course_Title"]."\" class=\"span3\" placeholder=\"".$course["Course_Title"]."\" readonly>";  
                     echo "<label>Year of Entry</label>"; 

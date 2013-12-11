@@ -5,11 +5,10 @@
     $database = "db0909007_cm3028";
 
     try {
-                $dsn = "mysql:host=".$hostname.";dbname=".$database;
-                $conn = new PDO($dsn, $username, $password);
-                $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            } catch (PDOException $e) {
-              // enter catch block in event of error in preceding try block
-              echo "Connection failed: ".$e->getMessage();
-            }
+        $dsn = "mysql:host=".$hostname.";dbname=".$database;
+        $conn = new PDO($dsn, $username, $password);
+        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    } catch (PDOException $e) {
+        echo "Connection failed: ".$e->getMessage();
+    }
 ?>

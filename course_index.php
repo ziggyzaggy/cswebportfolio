@@ -1,17 +1,14 @@
 <!--Created by Greg Morrison(1207569)-->
 <?php Require_once "inc/inc.php";?> 
 
-<?php
-
- Include 'header.php';?> 
+<?php Include 'header.php';?> 
     
 <body>
 	<div class = "container">
             <div class = "well">
                 <?php include 'navigation_bar.php';
-						require("check.admin.php");
-
-				?>  
+                      require("check.admin.php");
+		?>  
 
                 <?php
                  try {
@@ -29,7 +26,7 @@
                             echo "<td><a href=\"course_show.php?Course_ID=".$Row["Course_ID"]."\">".$Row["Course_Title"]."</a></td>";
                             echo "<td>".$Row["Year_of_Entry"]."</td>";
                             echo "<td>".$Row["Course_Duration"]."</td>";
-                            echo "<td><a href=\"course_update.php?Course_ID=".$Row["Course_ID"]."\">Edit</a> <a href=\"course_delete.php?Course_ID=".$Row["Course_Id"]."\">Delete</a></td>"; 
+                            echo "<td><a href=\"course_update.php?Course_ID=".$Row["Course_ID"]."\">Edit</a> <a href=\"course_delete.php?Course_ID=".$Row["Course_ID"]."\">Delete</a></td>"; 
                             echo "</tr>";
                         }
                         echo "</table>"; 
