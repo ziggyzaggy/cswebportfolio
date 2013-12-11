@@ -38,7 +38,7 @@ include('inc/inc.php');
 				
 				
 				$years = $conn -> query ("
-				SELECT Year_of_Course
+				SELECT Year_of_Entry
 				FROM course_modules, courses, modules
 				WHERE course_modules.Course_ID = courses.Course_ID
 				AND course_modules.Module_ID = modules.Module_ID
@@ -47,8 +47,8 @@ include('inc/inc.php');
 				"); //iterates through the recommended years of a course
 				foreach($years as $year){
 				
-					echo  " Books recommended for Year " . $year['Year_of_Course'] .":  <br><br>";
-					$currentYear = $year['Year_of_Course'];
+					echo  " Books recommended for Year " . $year['Year_of_Entry'] .":  <br><br>";
+					$currentYear = $year['Year_of_Entry'];
 				
 				$resultModule = $conn -> query("
 			
@@ -68,12 +68,12 @@ include('inc/inc.php');
 															 **returned in the previous loop
 															*/
 				("
-				SELECT books.Title, books.Book_ID, course_modules.Year_of_Course
+				SELECT books.Title, books.Book_ID, course_modules.Year_of_Teaching
 				FROM books, course_modules, reading_list
 				WHERE  books.Book_ID = reading_list.Book_ID	
 				AND reading_list.Module_ID = course_modules.Module_ID
 				AND course_modules.Module_ID = '$moduleId'
-				AND course_modules.Year_of_Course = '$currentYear'
+				AND course_modules.Year_of_Teaching = '$currentYear'
 				GROUP BY books.Book_ID
 				"); 	
 				
@@ -85,7 +85,7 @@ include('inc/inc.php');
 				
 					foreach($resultBooks as $booksRow){ //iterate through the books that correspond to each of the courses
 		
-						echo "<a style='padding-right:100px; padding-left:30px;' href = display.php?id=" . $booksRow['Book_ID'] . ">Recommended for year ".$booksRow['Year_of_Course'] .": View <b> " . $booksRow['Title'] . "</b> </a>  <br>"; //display links to each book that corresponds to the course name, links sends a unique id for to the display page
+						echo "<a style='padding-right:100px; padding-left:30px;' href = display.php?id=" . $booksRow['Book_ID'] . ">Recommended for year ".$booksRow['Year_of_Entry'] .": View <b> " . $booksRow['Title'] . "</b> </a>  <br>"; //display links to each book that corresponds to the course name, links sends a unique id for to the display page
 						}
 					}else{
 							echo "No book recommendations for this year yet<br>"; //if no books found for this course
