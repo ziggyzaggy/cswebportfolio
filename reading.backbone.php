@@ -16,7 +16,7 @@ include('inc/inc.php');
 	$i = 1;
 	
 		//check which category was set and perform correct query
-		//using admins table as no other table is created yet, will change once tables are available
+		
 		
 		if($_GET['category'] == 'Module'){ 
 		
@@ -24,7 +24,7 @@ include('inc/inc.php');
 		
 		 header("location:books_for_module.php");
 		
-		}elseif($_GET['category'] == 'Course and Year'){ //that's work in progress
+		}elseif($_GET['category'] == 'Course and Year'){ 
 		
 		 echo "<h2>Course and Year books: </h2> <br>";
 		 
@@ -38,7 +38,7 @@ include('inc/inc.php');
 				
 				
 				$years = $conn -> query ("
-				SELECT Year_of_Entry
+				SELECT Year_of_Teaching
 				FROM course_modules, courses, modules
 				WHERE course_modules.Course_ID = courses.Course_ID
 				AND course_modules.Module_ID = modules.Module_ID
@@ -47,8 +47,8 @@ include('inc/inc.php');
 				"); //iterates through the recommended years of a course
 				foreach($years as $year){
 				
-					echo  " Books recommended for Year " . $year['Year_of_Entry'] .":  <br><br>";
-					$currentYear = $year['Year_of_Entry'];
+					echo  " Books recommended for Year " . $year['Year_of_Teaching'] .":  <br><br>";
+					$currentYear = $year['Year_of_Teaching'];
 				
 				$resultModule = $conn -> query("
 			
@@ -85,7 +85,7 @@ include('inc/inc.php');
 				
 					foreach($resultBooks as $booksRow){ //iterate through the books that correspond to each of the courses
 		
-						echo "<a style='padding-right:100px; padding-left:30px;' href = display.php?id=" . $booksRow['Book_ID'] . ">Recommended for year ".$booksRow['Year_of_Entry'] .": View <b> " . $booksRow['Title'] . "</b> </a>  <br>"; //display links to each book that corresponds to the course name, links sends a unique id for to the display page
+						echo "<a style='padding-right:100px; padding-left:30px;' href = display.php?id=" . $booksRow['Book_ID'] . ">Recommended for year ".$booksRow['Year_of_Teaching'] .": View <b> " . $booksRow['Title'] . "</b> </a>  <br>"; //display links to each book that corresponds to the course name, links sends a unique id for to the display page
 						}
 					}else{
 							echo "No book recommendations for this year yet<br>"; //if no books found for this course
