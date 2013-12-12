@@ -1,13 +1,13 @@
 <!--Created by Greg Morrison 1207569-->
 
-<?php require_once "inc/inc.php";?> 
+<?php require_once "inc/inc.php";?> <!--Database Connection-->
 
 <?php
 
 
 
 
- include 'header.php';?> 
+ include 'header.php';?> <!--contains CSS files-->
 
 <body>
     
@@ -24,6 +24,7 @@
                 $Course_Duration = $_POST['Course_Duration'];
                 
                 TRY{
+                	//Start of transaction
                     $conn ->BeginTransaction();
                     $SQL = "Insert Into Courses (Course_ID, Course_Title, Year_of_Entry, Course_Duration) VALUES (\"".$CourseID."\",\"".$CourseName."\",".$EntryYear.",".$Course_Duration.")";
                     $SQLPREP = $conn->prepare($SQL);
@@ -42,6 +43,7 @@
                         exit("Error: The course was not created: ". $e->getMessage());  
                     }
                     $conn=null; 
+                    //end of the transaction
                 }
               ?>
               <form class="well" action="" method="POST"> <!--Starts the form that data can be entered in to to create a new course--> 

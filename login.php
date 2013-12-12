@@ -35,12 +35,12 @@
 	}else{ //if admin IS logged in display the controls:
 	
 		echo"
-			Welcome admin<br>
+			Welcome <b>Administrator</b> <br>
 			
-			[ admin controls will be somewhere around here... meanwhile <a class='btn btn-primary' href='http://www.youtube.com/watch?v=dQw4w9WgXcQ' target='_blank'>Click!</a> ]
+			 <p>The administrator controls are now shown at the top in the navigation bar. <br>
+			 When you are finished, don't forget to log out using the button right below this text.</p>
 			<br>
-			<br>
-			<br>
+			
 			<form action='admin.php' method='post'>
 			<input type='submit' class='btn btn-primary' value='log out' name='logout'>
 			</form>
@@ -51,6 +51,11 @@
 
 	
 	if(isset($_POST['submit'])){ //checks if the submit button was clicked
+	
+		if(empty($_POST['user']) or empty($_POST['password'])){
+			echo"<br><p class='invalid'>One or more fields are empty</p>";//display message if fields were missed out
+		}
+	
 		$u = $_POST['user'];
 		$p = $_POST['password'];
 		
@@ -66,7 +71,7 @@
 			header("location:admin.php");
 			
 		}else{
-			echo "<br><p class='invalid'>Invalid Username or Password</p>";
+			echo "<p class='invalid'>Invalid Username or Password</p>"; //display message if login details were incorrect
 		
 		}
 		
@@ -75,7 +80,7 @@
 	
 	if(isset($_POST['logout'])){ //if the logout button was clicked:
 	
-		session_destroy();  	//destroy the session(log the user out)
+		session_destroy();  	//destroy the session(log the admin out)
 		
 		header("location:index.php"); //redirect user to the home page
 	

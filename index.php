@@ -19,23 +19,19 @@
 			
 			<div class="row-fluid">
 				<div class ="span6 well">
-					<h4>Content column 1</h4>
+					<h4>I am a normal User</h4>
 				
-					<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet
-					dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit
-					lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit
+					<p>and i want to see the book recommendations now!
 					</p>
 					
-					<a class="btn btn-primary" href="#">I am a button</a>
+					<a class="btn btn-primary" href="reading.php">Take me to the reading list</a>
 					
 				</div>
 				
 				<div class="span6 well">
-					<h4>Content Column 2</h4>
-					<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet
-					dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit
-					lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit
-					</p>
+					<h4>I am the website administrator</h4>
+					<p>Let me log in so i can update the content</p>
+					<a class="btn btn-primary" href="admin.php">Log in</a>
 				</div>		
 			
 			</div>
