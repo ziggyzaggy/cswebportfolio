@@ -79,16 +79,16 @@ include('inc/inc.php');
 				
 				
 																								
-				if($resultBooks -> rowCount($resultBooks) > 0){ //check if the course has any books recommended
+				if($resultBooks -> rowCount($resultBooks) > 0){ //check if the module has any books recommended
 				
 					
 				
-					foreach($resultBooks as $booksRow){ //iterate through the books that correspond to each of the courses
+					foreach($resultBooks as $booksRow){ //iterate through the books that correspond to each of the modules
 		
 						echo "<a style='padding-right:100px; padding-left:30px;' href = display.php?id=" . $booksRow['Book_ID'] . ">Recommended for year ".$booksRow['Year_of_Teaching'] .": View <b> " . $booksRow['Title'] . "</b> </a>  <br>"; //display links to each book that corresponds to the course name, links sends a unique id for to the display page
 						}
 					}else{
-							echo "No book recommendations for this year yet<br>"; //if no books found for this course
+							echo "No book recommendations for this year yet<br>"; //if no books found for this module
 						}
 						
 				echo "<br>";
@@ -146,16 +146,16 @@ include('inc/inc.php');
 					
 					
 																									
-					if($resultBooks -> rowCount($resultBooks) > 0){ //check if the course has any books recommended
+					if($resultBooks -> rowCount($resultBooks) > 0){ //check if the module has any books recommended
 					
 						echo " > books recommended for this Module: <br><br>";
 					
-						foreach($resultBooks as $booksRow){ //iterate through the books that correspond to each of the courses
+						foreach($resultBooks as $booksRow){ //iterate through the books that correspond to each of the modules
 			
 							echo "<a style='padding-right:100px; padding-left:30px;' href = display.php?id=" . $booksRow['Book_ID'] . ">View <b> " . $booksRow['Title'] . "</b> </a>  <br>"; //display links to each book that corresponds to the course name, links sends a unique id for to the display page
 							}
 						}else{
-								echo "No book recommendations for this course yet<br>"; //if no books found for this course
+								echo "No book recommendations for this course yet<br>"; //if no books found for this module
 							}
 					
 					}

@@ -85,7 +85,7 @@ if($_SERVER['REQUEST_URI'] === '/cswebportfolio/course_index.php' || $_SERVER['R
                 </ul>
                 
             </li>
-        </ul>
+       
 		
 		
 		<ul class="nav">
@@ -96,6 +96,7 @@ if($_SERVER['REQUEST_URI'] === '/cswebportfolio/course_index.php' || $_SERVER['R
 		
 		<?php }?>
 		</ul>
+		 </ul>
         <ul class = "nav pull-right">
             <li <?php echo $adminActive; ?> > <a href="admin.php">Admin</a></li>
         </ul>
