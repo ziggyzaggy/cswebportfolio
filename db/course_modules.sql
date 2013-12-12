@@ -15,7 +15,7 @@ CREATE TABLE IF NOT EXISTS `course_modules` (
 -- Dumping data for table `course_modules`
 --
 
-INSERT INTO `course_modules` (`Course_ID`, `Module_ID`, `Year_of_Course`) VALUES
+INSERT INTO `course_modules` (`Course_ID`, `Module_ID`, `Year_of_Teaching`) VALUES
 ('CIM234', 'CM4025', 3),
 ('CNM898', 'CM4025', 2),
 ('IST876', 'CM4109', 4);
