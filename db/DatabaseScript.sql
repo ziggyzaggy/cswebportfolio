@@ -85,7 +85,7 @@ INSERT INTO `courses` (`Course_ID`, `Course_Title`, `Year_of_Entry`, `Course_dur
 CREATE TABLE IF NOT EXISTS `course_modules` (
   `Course_ID` char(6) NOT NULL,
   `Module_ID` char(6) NOT NULL,
-  `Year_of_Course` enum('1','2','3','4') NOT NULL,
+  `Year_of_Teaching` enum('1','2','3','4') NOT NULL,
   PRIMARY KEY (`Course_ID`,`Module_ID`),
   KEY `Course_ID` (`Course_ID`),
   KEY `Module_ID` (`Module_ID`)
