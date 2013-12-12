@@ -21,19 +21,19 @@ $indexActive="";
 $adminActive="";
 
 //check what page the user is on and set active classes accordingly
-if($_SERVER['REQUEST_URI'] === '/cswebportfolio/course_index.php' || $_SERVER['REQUEST_URI'] === '/cswebportfolio/course_create.php'){
+if($_SERVER['REQUEST_URI'] === '/phpcw/course_index.php' || $_SERVER['REQUEST_URI'] === '/phpcw/course_create.php'){
 	$coursesActive = "active";
-}elseif($_SERVER['REQUEST_URI'] === '/cswebportfolio/book_index.php' || $_SERVER['REQUEST_URI'] === '/cswebportfolio/book_create.php'){
+}elseif($_SERVER['REQUEST_URI'] === '/phpcw/book_index.php' || $_SERVER['REQUEST_URI'] === '/phpcw/book_create.php'){
 	$booksActive = "active";
-}elseif($_SERVER['REQUEST_URI'] === '/cswebportfolio/module_index.php' || $_SERVER['REQUEST_URI'] === '/cswebportfolio/module_create.php'){
+}elseif($_SERVER['REQUEST_URI'] === '/phpcw/module_index.php' || $_SERVER['REQUEST_URI'] === '/phpcw/module_create.php'){
 	$readingActive = "active";
-}elseif($_SERVER['REQUEST_URI'] === '/cswebportfolio/reading.php'){
+}elseif($_SERVER['REQUEST_URI'] === '/phpcw/reading.php'){
 	$readingActive = "class = 'active'";
-}elseif($_SERVER['REQUEST_URI'] === '/cswebportfolio/search.php'){
+}elseif($_SERVER['REQUEST_URI'] === '/phpcw/search.php'){
 	$readingActive = "class = 'active'";
-}elseif($_SERVER['REQUEST_URI'] === '/cswebportfolio/index.php'){
+}elseif($_SERVER['REQUEST_URI'] === '/phpcw/index.php'){
 	$indexActive = "class = 'active'";
-}elseif($_SERVER['REQUEST_URI'] === '/cswebportfolio/admin.php'){
+}elseif($_SERVER['REQUEST_URI'] === '/phpcw/admin.php'){
 	$adminActive = "class = 'active'";
 	}
 
@@ -85,7 +85,7 @@ if($_SERVER['REQUEST_URI'] === '/cswebportfolio/course_index.php' || $_SERVER['R
                 </ul>
                 
             </li>
-        </ul>
+       
 		
 		
 		<ul class="nav">
@@ -96,6 +96,7 @@ if($_SERVER['REQUEST_URI'] === '/cswebportfolio/course_index.php' || $_SERVER['R
 		
 		<?php }?>
 		</ul>
+		 </ul>
         <ul class = "nav pull-right">
             <li <?php echo $adminActive; ?> > <a href="admin.php">Admin</a></li>
         </ul>
