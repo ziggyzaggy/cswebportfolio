@@ -29,20 +29,9 @@
                 $attach_count = (isset($_POST['attach_count'])) ? $_POST['attach_count'] : 0;
                 $detach_count = (isset($_POST['detach_count'])) ? $_POST['detach_count'] : 0;
                 
-                
-                //simple check to see if the post variables are set
-                echo "the course id: ".$cid."<br>";
-                echo "the course name: ".$cname."<br>";
-                echo "the year of entry: ".$yentry."<br>";
-                echo "the course duration: ".$Course_Duration."<br>";
-                echo "<br>";
-                
                 //going through all the attached modules and printing their values
                 for ($i=0;$i<$attach_count;$i++)
                 {
-                    echo "the attached module id: ".$_POST[$i."_attached_moduleId"]."<br>";
-                    echo "the year of teaching: ".$_POST[$i."_Year_of_Teaching"]."<br>";
-                    
                     //if the checkbox_detache is checked then detach it from db
                     if(isset($_POST[$i."_checkbox_detache"])){
                         //create the connection 
@@ -78,9 +67,6 @@
                 //going through all the detached modules and printing their values
                 for ($i=0;$i<$detach_count;$i++)
                 {
-                    echo "the detached module id: ".$_POST[$i."_detached_moduleId"]."<br>";
-                    echo "the year of teaching: ".$_POST[$i."_Year_of_Teaching"]."<br>";
-                    
                     //if the checkbox_attach is checked then attach it to db
                     if(isset($_POST[$i."_checkbox_attach"])){
                         //create the connection 
@@ -110,6 +96,12 @@
                 }
                 // end author :Rayyan Alorini 1113195
 
+                
+                echo "<div class=\"alert alert-success\">
+                        <p>Well done, you have successfully updated the <strong>".$cid." ".$cname."</strong> course!</p>
+                        <a href=\"course_index.php\" class=\"alert-link\"><button type=\"button\" class=\"btn btn-primary\">Show Courses</button></a>
+                      </div>";
+                        
                 //this will clear the variable and stop the script at step 3.
                 $_GET['Course_ID'] = null;
             }

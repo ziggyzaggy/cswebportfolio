@@ -18,7 +18,6 @@
             <?php
             
             //Normal execution flow: 1.fetches the course info from db and puts it in the form for editing
-            // TO DO : USE PREPARE STATEMENTS
             if(isset($_GET['Course_ID'])){
                 //fetch the course from the database and update it with the new values on submit
                 try {
@@ -36,7 +35,6 @@
                     echo "</tr>";
                     echo "</table>";
                     
-                    // TO DO : USE PREPARE STATEMENTS
                     // author :Rayyan Alorini 1113195
                     $sql_get_modules_attached ="SELECT Module_ID, Title FROM modules WHERE Module_ID IN (SELECT Module_ID FROM course_modules WHERE Course_ID = '".$_GET['Course_ID']."' )";
                     $query_modules_attached = $conn->query($sql_get_modules_attached);

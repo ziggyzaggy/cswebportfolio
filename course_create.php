@@ -21,14 +21,14 @@
                 $CourseID = $_POST['Course_ID'];
                 $CourseName = $_POST['Course_Title'];
                 $EntryYear = $_POST['Year_of_Entry'];
-                $Course_Duration = $_POST[' Course_duration'];
+                $Course_Duration = $_POST['Course_Duration'];
                 
                 TRY{
-                    $CONN ->BeginTransaction();
-                    $SQL = "Insert Into Courses ((Course_ID, Course_Title, Year_of_Entry, Course_Duration) VALUES (\"".$CourseID."\",\"".$CourseName."\",".$EntryYear.",".$Course_Duration.")";
-                    $SQLPREP = $CONN->prepare($sql);
+                    $conn ->BeginTransaction();
+                    $SQL = "Insert Into Courses (Course_ID, Course_Title, Year_of_Entry, Course_Duration) VALUES (\"".$CourseID."\",\"".$CourseName."\",".$EntryYear.",".$Course_Duration.")";
+                    $SQLPREP = $conn->prepare($SQL);
                     $SQLPREP ->Execute ();
-                    $CONN -> Commit ();
+                    $conn -> Commit ();
                     
                     //display message showing a new course has been created
                         echo "<div class=\"alert alert-success\">
@@ -38,10 +38,10 @@
                         }
             //Message to be displayed if the course was not created successfully
             catch(PDOException $e) {
-                        $CONN->rollback();
+                        $conn->rollback();
                         exit("Error: The course was not created: ". $e->getMessage());  
                     }
-                    $CONN=null; 
+                    $conn=null; 
                 }
               ?>
               <form class="well" action="" method="POST"> <!--Starts the form that data can be entered in to to create a new course--> 
@@ -54,7 +54,7 @@
                 <label>Course Duration</label>  
                 <input name="Course_Duration" type="number" class="span3" min="0" max="5">
                 <br>
-                <button name="create" type="submit" class="btn">Submit</button>  
+                <button name="Create" type="submit" class="btn">Submit</button>  
             </form>
 </body>
 <?php include 'footer.php'?>
