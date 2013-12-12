@@ -29,6 +29,22 @@
                 $attach_count = (isset($_POST['attach_count'])) ? $_POST['attach_count'] : 0;
                 $detach_count = (isset($_POST['detach_count'])) ? $_POST['detach_count'] : 0;
                 
+                //update the course basic info
+                try{
+                    $conn->beginTransaction();
+                    $sql = "UPDATE courses SET `Course_Title`=\"".$cname."\", `Year_of_Entry`=".$yentry.", `Course_duration`=".$Course_Duration." WHERE `Course_ID`= \"".$cid."\"";                        
+                    $stmt = $conn->prepare($sql);                      
+                    $stmt->execute();
+                    $conn->commit();
+                }
+                catch(PDOException $e) {
+                    $conn->rollback();
+                    exit("unable to update the course: ". $e->getMessage());
+                }
+                
+    
+
+
                 //going through all the attached modules and printing their values
                 for ($i=0;$i<$attach_count;$i++)
                 {
